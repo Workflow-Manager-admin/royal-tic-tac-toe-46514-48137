@@ -1,0 +1,240 @@
+/* ===== Royal Tic-Tac-Toe Custom Theme Styling ===== */
+
+:root {
+  --primary: #3b5998;   /* Spec: primary */
+  --secondary: #f7f7f7; /* Spec: secondary */
+  --accent: #ffce00;     /* Spec: accent */
+  --bg: var(--secondary);
+  --board-bg: #fff;
+  --cell-hover-bg: #f0f4ff;
+  --cell-x-color: var(--primary);
+  --cell-o-color: var(--accent);
+  --cell-x-shadow: 0 1px 8px 0 #bfcbe6;
+  --cell-o-shadow: 0 1px 8px 0 #ffed99;
+  --indicator-text: #222c3d;
+  --winner: #3b5998;
+  --reset-btn-bg: var(--primary);
+  --reset-btn-text: #fff;
+  --reset-btn-hover-bg: #294071;
+  --footer-text: #656565;
+  --draw-color: #a0a0a0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--indicator-text);
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  min-height: 100vh;
+}
+
+/* App container */
+.royal-tic-tac-toe-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  background: var(--bg);
+}
+
+.game-container {
+  margin: auto;
+  padding: 26px 18px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 370px;
+  background: var(--board-bg);
+  border-radius: 28px;
+  box-shadow: 0 4px 32px 0 rgba(59, 89, 152, 0.08);
+  border: 2.5px solid var(--primary);
+}
+
+/* Title styling */
+.royal-title {
+  margin-bottom: 0.2em;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-align: center;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.17;
+}
+
+.indicator {
+  margin-bottom: 18px;
+  font-size: 1.20rem;
+  font-weight: 550;
+  min-height: 32px;
+  color: var(--primary);
+}
+
+.winner-text {
+  font-size: 1.28em;
+  font-weight: bold;
+  color: var(--winner);
+}
+
+.draw-text {
+  color: var(--draw-color);
+  font-weight: 600;
+}
+
+.board-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 18px 0;
+  width: 100%;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  grid-template-rows: repeat(3, 56px);
+  gap: 10px;
+  background: var(--board-bg);
+  padding: 7px;
+  border-radius: 12px;
+  box-shadow: 0 1px 14px 0 rgba(59, 89, 152, 0.07);
+  transition: box-shadow 0.1s, opacity 0.2s;
+}
+
+.game-board.disabled {
+  opacity: 0.84;
+  pointer-events: none;
+}
+
+.cell {
+  width: 56px;
+  height: 56px;
+  background: var(--secondary);
+  border: 2.5px solid var(--primary);
+  border-radius: 12px;
+  font-size: 2.15rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  transition: background 0.18s, box-shadow 0.18s;
+  cursor: pointer;
+  box-shadow: 0 1px 5px 0 rgba(59, 89, 152, 0.07);
+  outline: none;
+  user-select: none;
+}
+.cell:hover:not(:disabled) {
+  background: var(--cell-hover-bg);
+}
+/* X and O color differentiation */
+.cell-x {
+  color: var(--cell-x-color);
+  box-shadow: var(--cell-x-shadow);
+}
+.cell-o {
+  color: var(--cell-o-color);
+  box-shadow: var(--cell-o-shadow);
+}
+.cell:disabled {
+  opacity: 0.60;
+  cursor: default;
+}
+
+/* Royale Unicode Pieces */
+.king-piece {
+  color: var(--cell-x-color);
+  font-size: 2.16rem;
+  vertical-align: middle;
+  text-shadow: 0 3px 8px #bfcbe699;
+}
+
+.queen-piece {
+  color: var(--cell-o-color);
+  font-size: 2.16rem;
+  vertical-align: middle;
+  text-shadow: 0 3px 8px #ffed9999;
+}
+
+/* Reset/Replay Button */
+.reset-btn {
+  margin: 0 0 18px 0;
+  padding: 10px 30px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  background: var(--reset-btn-bg);
+  color: var(--reset-btn-text);
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59, 89, 152, 0.09);
+  outline: none;
+  transition: background 0.18s, box-shadow 0.13s;
+}
+.reset-btn:hover, .reset-btn:focus {
+  background: var(--reset-btn-hover-bg);
+  box-shadow: 0 4px 16px 0 var(--primary);
+}
+
+/* Footer note */
+.footer-note {
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 12px;
+  color: var(--footer-text);
+  font-size: 0.98em;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width:480px) {
+  .game-container {
+    max-width: 100vw;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    min-width: 0;
+  }
+  .board-wrapper {
+    margin: 0 0 14px 0;
+  }
+  .game-board {
+    grid-template-columns: repeat(3, 16vw);
+    grid-template-rows: repeat(3, 16vw);
+    gap: 3vw;
+    min-width: unset;
+    min-height: unset;
+  }
+  .cell {
+    width: 16vw;
+    height: 16vw;
+    font-size: 8vw;
+    border-radius: 8px;
+    min-width: 38px;
+    min-height: 38px;
+    max-width: 61vw;
+    max-height: 61vw;
+  }
+  .king-piece, .queen-piece {
+    font-size: 8vw;
+  }
+  .royal-title {
+    font-size: 1.36rem;
+  }
+  .indicator {
+    font-size: 1.03rem;
+  }
+  .reset-btn {
+    font-size: 0.99rem;
+    padding: 7px 16vw;
+  }
+}
+
+/* Accessibility: focus highlight */
+.cell:focus {
+  box-shadow: 0 0 0 3px var(--accent);
+  border-color: var(--accent);
+}
+.reset-btn:focus {
+  box-shadow: 0 0 0 4px var(--accent);
+}
